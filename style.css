@@ -12,7 +12,6 @@ body {
 }
 
 .game-body{
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,7 +111,7 @@ body {
     height: 7vh;
     box-shadow: 2px 2px 10px rgb(59, 59, 59), -2px -2px 10px rgb(47, 46, 46), -2px -2px 10px black, -2px -2px 10px black, -2px -2px 10px black;
     background-color: transparent;
-    padding: 05px; 
+    padding: 5px; 
 }
 
 .div {
@@ -122,18 +121,12 @@ body {
     gap: 10px;
 }
 
-.adjustdiv {
-    width: 100px;
-    height: 20px;
-}
+
 
 .adjust-up-btn {
     margin-top: -10px;
 }
 
-.adjust {
-    margin-top: 20px;
-}
 
 .up:hover,.down:hover,.left:hover,.right:hover{
     box-shadow: inset 2px 2px 10px rgb(0, 0, 0);
@@ -141,7 +134,7 @@ body {
 } 
 
 #g-over {
-    margin-top: -15px;
+    margin-top: -5px;
     color: #fff;
 }
 
@@ -169,7 +162,7 @@ body {
 
 }
 
-@media (max-width: 450px ){
+@media (max-width: 400px ){
     .board {
         height: 330px;
     }
