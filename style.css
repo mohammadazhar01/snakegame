@@ -24,7 +24,7 @@ body {
 .scores {
 
     max-width: 450px;
-    padding: 20px;
+    padding: 10px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -76,8 +76,7 @@ body {
 }
 
 .reset-btn button {
-  
-    font-size: 20px;
+    font-size: 18px;
     padding: 15px;
     color: white;
     background: transparent;
@@ -109,15 +108,27 @@ body {
     display: flex;
     justify-content:center;
     align-items: center;
-    width: 20%;
+    width: 100%;
+    height: 7vh;
     box-shadow: 2px 2px 10px rgb(59, 59, 59), -2px -2px 10px rgb(47, 46, 46), -2px -2px 10px black, -2px -2px 10px black, -2px -2px 10px black;
     background-color: transparent;
-    padding: 5px; 
+    padding: 05px; 
+}
+
+.div {
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    gap: 10px;
 }
 
 .adjustdiv {
-    width: 20%;
+    width: 100px;
     height: 20px;
+}
+
+.adjust-up-btn {
+    margin-top: -10px;
 }
 
 .adjust {
@@ -149,4 +160,11 @@ body {
         display: flex;
         
     }
+}
+
+@media (min-width: 540px ){
+    .board {
+        height: 450px;
+    }
+
 }
