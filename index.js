@@ -3,15 +3,16 @@ let FoodY;
 let FoodX;
 let SnakeX = 3;
 let SnakeY = 4;
-let SnakeBody = [];
+let SnakeBody = [[2,4]];
 let velocityX = 0;
 let velocityY = 0;
 let GameOver = false;
 let getScore = document.getElementById("score")
 let getHighscore = document.getElementById("highscore")
 let gameOverSound = new Audio("Sounds/gameover-sound.mp3");
-let turnSound = new Audio("Sounds/click-sound3.mp3");
-let eatSound = new Audio("Sounds/eating-sound2.mp3");
+let turnSound = new Audio("Sounds/click-sound4.mp3");
+let eatSound = new Audio("Sounds/eating-sound4.mp3");
+//let setIntervalID;
 let gameOverText = document.getElementById('g-over')
 let keys = document.querySelectorAll(".key")
 let soundbtn = document.getElementById("sound") 
@@ -61,18 +62,22 @@ function moveSnake(e){    //e contains the detail related to pressed key
         velocityY = 0 
     }
     main()
+
     return turnSound.play()
 
 }
 
 //moving snake through UI keys
 //console.log(keys[0].dataset.key)
+
 keys.forEach((key)=>{
-    key.addEventListener("click",()=>moveSnake({key:key.dataset.key}))
+    key.addEventListener("click",function keyPass(){moveSnake({key:key.dataset.key})})
 })
 
+console.log(keys)
+
  //Updating to when it is reset
-getHighscore.innerHTML = getHighscore.innerHTML.slice(0,13) + highsc
+ getHighscore.innerHTML = getHighscore.innerHTML.slice(0,13) + highsc
 
 function main() {
 
@@ -83,6 +88,7 @@ function main() {
     //pushing coordinates into the snake body array when it will eat food
     if(SnakeX === FoodX && SnakeY === FoodY) {
         FoodPosition()
+        eatSound.volume =0.3
         eatSound.play()
         SnakeBody.push([FoodX,FoodY])
 
@@ -133,17 +139,9 @@ function showGameOver() {
 
     gameOverSound.play()
 
-
-    //Clearing interval to stop snake
-    clearInterval(setIntervalID)
-
-    document.removeEventListener("keydown",moveSnake)
-    turnSound.pause()
-    
     //display game over text
     gameOverText.innerText = "Game Over..." 
 
-    
     //setting up high score
     if (score > highsc){
         highsc = score 
@@ -152,12 +150,21 @@ function showGameOver() {
         console.log(highsc)
     }
 
+    
     //adding a function to reset the game
     playbtn.addEventListener("click",playAgain)
 
     playbtn.innerHTML = "playagain"+`<img src="controls/reset-icon.svg" alt="reset">`
     
+    //Clearing interval to stop snake
+    clearInterval(setIntervalID)
 
+    document.removeEventListener("keydown",moveSnake)
+
+    //Hidding keys
+    document.getElementById("keys").style.display = "none"
+    turnSound.pause()
+    
     
 }
 
@@ -190,7 +197,7 @@ FoodPosition()
 main()
 
 //To move snaked automatically
-setIntervalID = setInterval(main,250)
+setIntervalID = setInterval(main,200)
 
 //adding event when key is pressed
 document.addEventListener("keydown",moveSnake);
