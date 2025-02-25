@@ -164,7 +164,9 @@ function showGameOver() {
     //Hidding keys
     document.getElementById("keys").style.display = "none"
     turnSound.pause()
-    
+ 
+    // setting up the overflow property to default after game is played
+    document.getElementsByTagName('body')[0].style.overflow = "visible";
     
 }
 
@@ -206,6 +208,9 @@ function play() {
     moveSnake({key:"ArrowRight"})
     console.log("playing")
     playbtn.removeEventListener("click",play)
+ 
+    //Avoiding scrolling while playing the game
+    document.getElementsByTagName('body')[0].style.overflow = "hidden";
 }
 
 playbtn.addEventListener("click",play)
